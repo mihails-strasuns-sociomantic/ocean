@@ -17,7 +17,7 @@
 
 module ocean.util.container.more.Vector;
 
-import ocean.core.ExceptionDefinitions : ArrayBoundsException;
+import ocean.core.Verify;
 import ocean.stdc.string : memmove;
 
 /******************************************************************************
@@ -260,7 +260,7 @@ struct Vector (V, int Size = 0)
 
         private V error (size_t line)
         {
-                throw new ArrayBoundsException (__FILE__, line);
+                verify(false, "Vector bounds violation", __FILE__, line);
         }
 
         /***********************************************************************

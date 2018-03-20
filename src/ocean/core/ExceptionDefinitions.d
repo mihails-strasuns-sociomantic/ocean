@@ -61,10 +61,15 @@ import core.thread;
 alias core.thread.ThreadException ThreadException;
 
 // Tango backwards compatibility aliases
+deprecated("In D2 errors must not be caught")
 public alias AssertError AssertException;
+deprecated("In D2 errors must not be caught")
 public alias OutOfMemoryError OutOfMemoryException;
+deprecated("In D2 errors must not be caught")
 public alias FinalizeError FinalizeException;
+deprecated("In D2 errors must not be caught")
 public alias RangeError ArrayBoundsException;
+deprecated("In D2 errors must not be caught")
 public alias SwitchError SwitchException;
 
 /**

@@ -175,7 +175,7 @@ private cstring expandFromDatabase(cstring path)
     {
         extra_memory = core.stdc.stdlib.malloc(extra_memory_size);
         if (extra_memory is null)
-            throw new OutOfMemoryException("Not enough memory for user lookup in tilde expansion.", __LINE__);
+            onOutOfMemoryError();
 
         // Obtain info from database.
         passwd *verify;
@@ -195,7 +195,7 @@ private cstring expandFromDatabase(cstring path)
         }
 
         if (core.stdc.errno.errno() != ERANGE)
-            throw new OutOfMemoryException("Not enough memory for user lookup in tilde expansion.", __LINE__);
+            onOutOfMemoryError();
 
         // extra_memory isn't large enough
         core.stdc.stdlib.free(extra_memory);
