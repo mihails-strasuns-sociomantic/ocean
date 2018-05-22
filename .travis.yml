@@ -14,8 +14,6 @@ git:
 # Do a shallow submodule fetch
 before_install: git submodule update --init
 
-if: NOT tag =~ \+d2$
-
 env:
     global:
         # Make sure beaver is in the PATH
@@ -29,6 +27,7 @@ jobs:
         - &test-matrix
           stage: Test
           # Don't build tags already converted to D2
+          if: NOT tag =~ \+d2$
           after_success: beaver dlang codecov
           install: beaver dlang install
           script: beaver dlang make
